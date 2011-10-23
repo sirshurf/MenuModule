@@ -28,5 +28,25 @@ class Menu_Bootstrap extends SirShurf_Application_Module_Bootstrap
             $this->setOptions($options);
         }
     }
+    
+    
+
+    protected function _initNav ()
+    {
+//        $objView = $this->getApplication()->bootstrapView()->getResource('view');
+        
+        // Get Menu Data
+        $objMenu = new Menu_Model_Menu();
+        $arrConf = $objMenu->getMenu();
+        Zend_Debug::dump($arrConf);
+//        return;
+        $this->getApplication()->setOptions($arrConf);
+        
+//        Zend_Debug::dump($objAuthentication);    
+        
+//        $objView->getHelper('navigation');//->setAcl($objAuthentication->getAcl());
+        //$objView->getHelper('menu');
+    }
+    
 
 }

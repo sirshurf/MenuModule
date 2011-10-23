@@ -46,13 +46,16 @@ class Menu_Model_Db_Menu extends SirShurf_Db_Table
     
     protected $_referenceMap = array();
 
-    public function __construct ($config = array(), $definition = null)
+    public function __construct ($config = array(), $definition = null, $boolLoadReference = true)
     {
         parent::__construct($config, $definition);
-        $this->_referenceMap = array(
-        'Parent' => array('columns' => array(self::COL_ID_PARENT), 'refTableClass' => 'Menu_Model_Db_Menu', 'refColumns' => array(self::COL_ID_MENU), 'displayColumn' => self::COL_LABEL), 
-        'Resources' => array('columns' => array(self::COL_RESOURCE), 'refTableClass' => 'User_Model_Db_Resources', 'refColumns' => array(User_Model_Db_Resources::COL_ID_RESOURCES), 
-        'displayColumn' => new Zend_Db_Expr("CONCAT_WS('/'," . User_Model_Db_Resources::COL_MODULE . "," . User_Model_Db_Resources::COL_CONTROLLER . ")")));
+        
+        if ($boolLoadReference) {
+            $this->_referenceMap = array(
+            'Parent' => array('columns' => array(self::COL_ID_PARENT), 'refTableClass' => 'Menu_Model_Db_Menu', 'refColumns' => array(self::COL_ID_MENU), 'displayColumn' => self::COL_LABEL), 
+            'Resources' => array('columns' => array(self::COL_RESOURCE), 'refTableClass' => 'User_Model_Db_Resources', 'refColumns' => array(User_Model_Db_Resources::COL_ID_RESOURCES), 
+            'displayColumn' => new Zend_Db_Expr("CONCAT_WS('/'," . User_Model_Db_Resources::COL_MODULE . "," . User_Model_Db_Resources::COL_CONTROLLER . ")")));
+        }
     
     }
 
