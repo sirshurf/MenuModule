@@ -33,14 +33,11 @@ class Menu_Bootstrap extends SirShurf_Application_Module_Bootstrap
 
     protected function _initNav ()
     {
-//        $objView = $this->getApplication()->bootstrapView()->getResource('view');
-        
         // Get Menu Data
         $objMenu = new Menu_Model_Menu();
         $arrConf = $objMenu->getMenu();
-        Zend_Debug::dump($arrConf);
-//        return;
-        $this->getApplication()->setOptions($arrConf);
+        $arrConf['resources']['navigation']['storage']['registry'] = true;
+        $this->setOptions($arrConf);
         
 //        Zend_Debug::dump($objAuthentication);    
         
