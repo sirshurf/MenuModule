@@ -1,6 +1,6 @@
 <?php
 
-class Menu_Bootstrap extends SirShurf_Application_Module_Bootstrap
+class Menu_Bootstrap extends Bf_Application_Module_Bootstrap
 {
 
     /**
@@ -39,10 +39,12 @@ class Menu_Bootstrap extends SirShurf_Application_Module_Bootstrap
         $arrConf['resources']['navigation']['storage']['registry'] = true;
         $this->setOptions($arrConf);
         
-//        Zend_Debug::dump($objAuthentication);    
+//        Zend_Debug::dump($objAuthentication);   
+
+        $objView = $this->getApplication()->view;
         
 //        $objView->getHelper('navigation');//->setAcl($objAuthentication->getAcl());
-        //$objView->getHelper('menu');
+        $objView->getHelper('menu');
     }
     
 

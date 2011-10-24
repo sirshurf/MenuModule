@@ -1,6 +1,6 @@
 <?php
 
-class Menu_Model_Db_Menu extends SirShurf_Db_Table
+class Menu_Model_Db_Menu extends Bf_Db_Table
 {
 
     /**
