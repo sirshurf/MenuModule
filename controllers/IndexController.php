@@ -6,6 +6,7 @@ class Menu_IndexController extends Zend_Controller_Action
 	{
 		$objMenuTable = new Menu_Model_Db_Menu();
 		$objMenuSelect = $objMenuTable->select(TRUE);
+		$objMenuSelect->where(Menu_Model_Db_Menu::COL_IS_DELETED." = ?",FALSE);
 		$arrOptions = array("hiddengrid" => false, "caption" => "");
 		$grid = new Ingot_JQuery_JqGrid('menu', new Ingot_JQuery_JqGrid_Adapter_DbTableSelect($objMenuSelect), $arrOptions);
 		$grid->setIdCol(Menu_Model_Db_Menu::COL_ID_MENU);
